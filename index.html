@@ -1,146 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Contact Me</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
+    <title>Contact App</title>
 
-body{
-    background:#f2f2f2;
-    font-family:Arial;
-    text-align:center;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-.card{
-    background:white;
-    width:320px;
-    margin:50px auto;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0px 0px 10px gray;
-}
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f2f2f2;
+        }
 
-img{
-    width:120px;
-    border-radius:50%;
-}
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
 
-button{
-    width:220px;
-    padding:15px;
-    margin:10px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    cursor:pointer;
-}
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-.call{
-    background:#28a745;
-    color:white;
-}
+        .contact-box {
+            margin-bottom: 25px;
+        }
 
-.whatsapp{
-    background:#25D366;
-    color:white;
-}
+        .contact-box p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #555;
+        }
 
-.email{
-    background:#007BFF;
-    color:white;
-}
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-</style>
+        button {
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+            color: white;
+        }
 
+        .call {
+            background: #28a745;
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .email {
+            background: #007bff;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+    </style>
 </head>
 
 <body>
 
-<div class="card">
+    <div class="container">
 
-<h1>Fardeen Chauhan</h1>
+        <h1>Contact Us</h1>
 
-<p>Software Developer</p>
+        <div class="contact-box">
 
-<button class="call" onclick="callPerson()">
-📞 Call Me
+            <p id="name">Name: Loading...</p>
 
-<script>
+            <p id="phone">Phone: Loading...</p>
 
-function callPerson(){
+            <p id="email">Email: Loading...</p>
 
-const params = new URLSearchParams(window.location.search);
+        </div>
 
-const id = params.get("id");
 
-let number = "";
+        <div class="buttons">
 
-if(id=="1"){
-number="+919111111111";
-}
+            <button class="call">
+                Call
+            </button>
 
-else if(id=="2"){
-number="+919222222222";
-}
 
-else if(id=="3"){
-number="+919333333333";
-}
+            <button class="whatsapp">
+                WhatsApp
+            </button>
 
-else{
-alert("Invalid QR Code");
-return;
-}
 
-window.location.href="tel:"+number;
+            <button class="email">
+                Email
+            </button>
 
-}
+        </div>
 
-</script><script>
+    </div>
 
-function callPerson(){
-
-const params = new URLSearchParams(window.location.search);
-
-const id = params.get("id");
-
-let number = "";
-
-if(id=="1"){
-number="+9163987026311";
-}
-
-else if(id=="2"){
-number="+919058687334";
-}
-
-else if(id=="3"){
-number="+91639845320";
-}
-
-else{
-alert("Invalid QR Code");
-return;
-}
-
-window.location.href="tel:"+number;
-
-}
-
-</script>
-
-</button>
-
-<button class="whatsapp">
-💬 WhatsApp
-</button>
-
-<button class="email">
-📧 Email
-</button>
-
-</div>
 
 </body>
-
 </html>
