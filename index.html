@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Call Me</title>
+
+<style>
+
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#f2f2f2;
+    font-family:Arial;
+}
+
+.card{
+
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 0 10px gray;
+
+}
+
+button{
+
+    width:220px;
+    height:60px;
+
+    background:#28a745;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+button:hover{
+
+    background:#218838;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<button onclick="callPerson()">
+
+📞 CALL ME
+
+</button>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getDatabase,
+ref,
+get
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyBwuXsp9X7vbX_QTmuumLyUMbijuUEn8xc",
+
+authDomain: "jinn-contact-46240.firebaseapp.com",
+
+databaseURL: "https://jinn-contact-46240-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+projectId: "jinn-contact-46240",
+
+storageBucket: "jinn-contact-46240.firebasestorage.app",
+
+messagingSenderId: "508872584697",
+
+appId: "1:508872584697:web:a62873c30f911b36716128"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getDatabase(app);
+
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("id");
+
+
+const contactRef = ref(db,"contacts/"+id);
+
+
+let phoneNumber="";
+
+
+get(contactRef).then((snapshot)=>{
+
+    if(snapshot.exists()){
+
+        phoneNumber=snapshot.val().phone;
+
+        console.log("Phone loaded");
+
+    }
+
+    else{
+
+        alert("Invalid QR Code");
+
+    }
+
+});
+
+
+window.callPerson=function(){
+
+    if(phoneNumber===""){
+
+        alert("Contact not loaded");
+
+        return;
+
+    }
+
+    window.location.href="tel:"+phoneNumber;
+
+};
+
+
+</script>
+
+</body>
+
+</html>
