@@ -68,22 +68,23 @@ h1{
 
 <div class="container">
 
-    <h1>ALTAMASH</h1>
+    <h1>CONTACT ME</h1>
 
     <!-- Replace with your phone number -->
-    <a href="tel:+911234567890" class="btn call">
-        📞 Call Me
-    </a>
+    <a href="javascript:void(0)" id="callButton" class="btn call" onclick="callPerson()">
+    Loading...
+</a>
 
     <!-- Replace with your WhatsApp number -->
-    <a href="https://wa.me/911234567890" class="btn whatsapp" target="_blank">
-        💬 WhatsApp Me
-    </a>
+    <a href="#" id="whatsappButton" class="btn whatsapp" target="_blank">
+    Loading...
+</a>
+
 
     <!-- Replace with your email -->
-    <a href="mailto:yourname@gmail.com" class="btn email">
-        📧 Email Me
-    </a>
+    <a href="#" id="emailButton" class="btn email">
+    Loading...
+</a>
 
 </div>
 
@@ -138,24 +139,31 @@ let phoneNumber="";
 
 get(contactRef).then((snapshot)=>{
 
-    if(snapshot.exists()){
+   if (snapshot.exists()) {
 
-        phoneNumber = snapshot.val().phone;
+    const data = snapshot.val();
 
-        console.log("Phone loaded:", phoneNumber);
+    phoneNumber = data.phone;
 
-        const button = document.getElementById("callButton");
+    document.getElementById("callButton").innerHTML = "📞 Call Me";
 
-        button.disabled = false;
-        button.innerHTML = "📞 CALL ME";
+    document.getElementById("whatsappButton").href =
+       "https://wa.me/" + data.whatsapp
 
-    }
+    document.getElementById("whatsappButton").innerHTML =
+        "💬 WhatsApp Me";
 
-    else{
+    document.getElementById("emailButton").href =
+        "mailto:" + data.email;
+    document.getElementById("emailButton").innerHTML =
+        "📧 Email Me";
 
-        alert("Invalid QR Code");
+} else {
 
-    }
+    alert("Invalid QR Code");
+
+}
+
 
 });
 
