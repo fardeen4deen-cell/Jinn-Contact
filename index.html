@@ -1,70 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Call Me</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact me</title>
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
 body{
-    margin:0;
+    background:#f2f2f2;
     display:flex;
     justify-content:center;
     align-items:center;
     height:100vh;
-    background:#f2f2f2;
-    font-family:Arial;
 }
 
-.card{
-
-    background:white;
+.container{
+    background:#fff;
     padding:40px;
     border-radius:15px;
-    box-shadow:0 0 10px gray;
-
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    text-align:center;
+    width:350px;
 }
 
-button{
+h1{
+    margin-bottom:30px;
+    color:#333;
+}
 
-    width:220px;
-    height:60px;
-
-    background:#28a745;
-
+.btn{
+    display:block;
+    text-decoration:none;
     color:white;
-
-    border:none;
-
-    border-radius:10px;
-
-    font-size:22px;
-
-    cursor:pointer;
-
+    padding:15px;
+    margin:15px 0;
+    border-radius:8px;
+    font-size:18px;
+    transition:.3s;
 }
 
-button:hover{
-
-    background:#218838;
-
+.call{
+    background:#007BFF;
 }
 
+.whatsapp{
+    background:#25D366;
+}
+
+.email{
+    background:#E74C3C;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
 </style>
 
 </head>
-
 <body>
 
-<div class="card">
+<div class="container">
 
-<button onclick="callPerson()">
+    <h1>ALTAMASH</h1>
 
-📞 CALL ME
+    <!-- Replace with your phone number -->
+    <a href="tel:+911234567890" class="btn call">
+        📞 Call Me
+    </a>
 
-</button>
+    <!-- Replace with your WhatsApp number -->
+    <a href="https://wa.me/911234567890" class="btn whatsapp" target="_blank">
+        💬 WhatsApp Me
+    </a>
+
+    <!-- Replace with your email -->
+    <a href="mailto:yourname@gmail.com" class="btn email">
+        📧 Email Me
+    </a>
 
 </div>
+
 
 <script type="module">
 
@@ -118,9 +140,14 @@ get(contactRef).then((snapshot)=>{
 
     if(snapshot.exists()){
 
-        phoneNumber=snapshot.val().phone;
+        phoneNumber = snapshot.val().phone;
 
-        console.log("Phone loaded");
+        console.log("Phone loaded:", phoneNumber);
+
+        const button = document.getElementById("callButton");
+
+        button.disabled = false;
+        button.innerHTML = "📞 CALL ME";
 
     }
 
@@ -131,6 +158,7 @@ get(contactRef).then((snapshot)=>{
     }
 
 });
+
 
 
 window.callPerson=function(){
