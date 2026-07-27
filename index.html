@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact me</title>
+
+<title>Contact Me</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -13,169 +16,384 @@
     font-family:Arial, sans-serif;
 }
 
+
 body{
+
     background:#f2f2f2;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     height:100vh;
+
 }
+
+
 
 .container{
+
     background:#fff;
+
     padding:40px;
+
     border-radius:15px;
+
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
+
     text-align:center;
+
     width:350px;
+
 }
+
+
 
 h1{
+
     margin-bottom:30px;
+
     color:#333;
+
 }
+
+
 
 .btn{
+
     display:block;
+
     text-decoration:none;
+
     color:white;
+
     padding:15px;
+
     margin:15px 0;
+
     border-radius:8px;
+
     font-size:18px;
+
     transition:.3s;
+
 }
+
+
 
 .call{
+
     background:#007BFF;
+
 }
+
+
 
 .whatsapp{
+
     background:#25D366;
+
 }
+
+
 
 .email{
+
     background:#E74C3C;
+
 }
 
+
+
 .btn:hover{
+
     transform:scale(1.05);
+
 }
+
+
+.note{
+    margin-top:20px;
+    font-size:12px;
+    color:#777;
+}
+
 </style>
 
 </head>
+
+
 <body>
+
 
 <div class="container">
 
-    <h1 id="personName">CONTACT ME</h1>
+<h1 id="personName">
+Loading...
+</h1>
 
-    <!-- Replace with your phone number -->
-    <a href="javascript:void(0)" id="callButton" class="btn call" onclick="callPerson()">
-    Loading...
-</a>
 
-    <!-- Replace with your WhatsApp number -->
-    <a href="#" id="whatsappButton" class="btn whatsapp" target="_blank">
-    Loading...
+<a href="#" id="callButton" class="btn call">
+Call Me
 </a>
 
 
-    <!-- Replace with your email -->
-    <a href="#" id="emailButton" class="btn email">
-    Loading...
+<a href="#" id="whatsappButton" class="btn whatsapp" target="_blank">
+WhatsApp Me
 </a>
+
+
+<a href="#" id="emailButton" class="btn email">
+Email Me
+</a>
+
+
+<p class="note">
+Call disconnect after 1 minute automatically
+</p>
+
 
 </div>
 
 
+
+
+
 <script type="module">
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+
+// Firebase imports
+
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+import { getDatabase, ref, get } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+
+
+// Your Firebase Configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBwuXsp9X7vbX_QTmuumLyUMbijuUEn8xc",
-  authDomain: "jinn-contact-46240.firebaseapp.com",
-  databaseURL: "https://jinn-contact-46240-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "jinn-contact-46240",
-  storageBucket: "jinn-contact-46240.firebasestorage.app",
-  messagingSenderId: "508872584697",
-  appId: "1:508872584697:web:a62873c30f911b36716128"
+
+
+apiKey: "AIzaSyBwuXsp9X7vbX_QTmuumLyUMbijuUEn8xc",
+
+
+authDomain: "jinn-contact-46240.firebaseapp.com",
+
+
+databaseURL: "https://jinn-contact-46240-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+
+projectId: "jinn-contact-46240",
+
+
+storageBucket: "jinn-contact-46240.firebasestorage.app",
+
+
+messagingSenderId: "508872584697",
+
+
+appId: "1:508872584697:web:a62873c30f911b36716128"
+
+
 };
 
+
+
+
+
 // Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
+
 
 const db = getDatabase(app);
 
 
+
+
+// Get ID from QR URL
+
 const params = new URLSearchParams(window.location.search);
 
-const id = params.get("id");
 
+const id = "2";
+
+
+
+
+
+
+if(!id){
+
+    document.getElementById("personName").innerHTML =
+    "Contact Me";
+
+}
+
+
+
+
+
+
+// Firebase location
 
 const contactRef = ref(db,"contacts/"+id);
 
 
-let phoneNumber="";
 
 
-get(contactRef).then((snapshot)=>{
-
-   if (snapshot.exists()) {
-
-    const data = snapshot.val();
-
-phoneNumber = data.phone;
-
-// Show Firebase name in heading
-document.getElementById("personName").innerHTML = data.name;
+let phoneNumber = "";
 
 
-    document.getElementById("callButton").innerHTML = "📞 Call Me";
 
-    document.getElementById("whatsappButton").href =
-       "https://wa.me/" + data.whatsapp
 
-    document.getElementById("whatsappButton").innerHTML =
+
+// Get Contact Data
+
+
+get(contactRef)
+
+.then((snapshot)=>{
+
+
+    console.log("Firebase Data:", snapshot.val());
+
+
+
+    if(snapshot.exists()){
+
+
+
+        const data = snapshot.val();
+
+
+
+        phoneNumber = String(data.phone);
+
+
+
+
+
+        // Name
+
+        document.getElementById("personName").innerHTML =
+        data.name || "CONTACT ME";
+
+
+
+
+
+        // Call Button
+
+        document.getElementById("callButton").innerHTML =
+        "📞 Call Me";
+
+
+
+
+
+        // WhatsApp Button
+
+        document.getElementById("whatsappButton").href =
+"https://wa.me/" + String(data.whatsapp).replace(/\D/g,'');
+
+
+
+        document.getElementById("whatsappButton").innerHTML =
         "💬 WhatsApp Me";
 
-    document.getElementById("emailButton").href =
+
+
+
+
+        // Email Button
+
+        document.getElementById("emailButton").href =
         "mailto:" + data.email;
-    document.getElementById("emailButton").innerHTML =
+
+
+
+        document.getElementById("emailButton").innerHTML =
         "📧 Email Me";
 
-} else {
 
-    alert("Invalid QR Code");
 
-}
+    }
 
+
+    else{
+
+
+        document.getElementById("personName").innerHTML =
+        "Invalid QR Code";
+
+
+        alert("Contact not found in database");
+
+
+    }
+
+
+
+})
+
+
+
+.catch((error)=>{
+
+console.log("Firebase Error:", error);
+
+document.getElementById("personName").innerHTML =
+error.message;
 
 });
 
 
 
-window.callPerson=function(){
 
-    if(phoneNumber===""){
 
-        alert("Contact not loaded");
 
-        return;
 
-    }
+// Call Button Function
 
-    window.location.href="tel:"+phoneNumber;
+
+document.getElementById("callButton").onclick=function(e){
+
+
+e.preventDefault();
+
+
+
+if(phoneNumber===""){
+
+
+alert("Contact not loaded");
+
+
+return;
+
+
+}
+
+
+
+window.location.href="tel:"+phoneNumber;
+
+
 
 };
 
 
+
+
 </script>
+
 
 </body>
 
