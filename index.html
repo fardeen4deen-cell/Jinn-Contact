@@ -68,7 +68,7 @@ h1{
 
 <div class="container">
 
-    <h1>CONTACT ME</h1>
+    <h1 id="personName">CONTACT ME</h1>
 
     <!-- Replace with your phone number -->
     <a href="javascript:void(0)" id="callButton" class="btn call" onclick="callPerson()">
@@ -91,36 +91,23 @@ h1{
 
 <script type="module">
 
-import { initializeApp } 
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-import {
-getDatabase,
-ref,
-get
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-
+// Your web app's Firebase configuration
 const firebaseConfig = {
-
-apiKey: "AIzaSyBwuXsp9X7vbX_QTmuumLyUMbijuUEn8xc",
-
-authDomain: "jinn-contact-46240.firebaseapp.com",
-
-databaseURL: "https://jinn-contact-46240-default-rtdb.asia-southeast1.firebasedatabase.app",
-
-projectId: "jinn-contact-46240",
-
-storageBucket: "jinn-contact-46240.firebasestorage.app",
-
-messagingSenderId: "508872584697",
-
-appId: "1:508872584697:web:a62873c30f911b36716128"
-
+  apiKey: "AIzaSyBwuXsp9X7vbX_QTmuumLyUMbijuUEn8xc",
+  authDomain: "jinn-contact-46240.firebaseapp.com",
+  databaseURL: "https://jinn-contact-46240-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "jinn-contact-46240",
+  storageBucket: "jinn-contact-46240.firebasestorage.app",
+  messagingSenderId: "508872584697",
+  appId: "1:508872584697:web:a62873c30f911b36716128"
 };
 
-
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const db = getDatabase(app);
@@ -143,7 +130,11 @@ get(contactRef).then((snapshot)=>{
 
     const data = snapshot.val();
 
-    phoneNumber = data.phone;
+phoneNumber = data.phone;
+
+// Show Firebase name in heading
+document.getElementById("personName").innerHTML = data.name;
+
 
     document.getElementById("callButton").innerHTML = "📞 Call Me";
 
