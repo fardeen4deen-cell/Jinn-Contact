@@ -1,399 +1,570 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Contact Me</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Jinnverse Contact </title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+rel="stylesheet">
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
 
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:'Poppins',sans-serif;
+
+}
 
 body{
 
-    background:#f2f2f2;
+background:linear-gradient(
+-45deg,
+#050505,
+#101010,
+#171717,
+#222222
+);
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+background-size:400% 400%;
 
-    height:100vh;
+animation:bgMove 10s ease infinite;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:40px;
 
 }
 
+@keyframes bgMove{
 
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+/* Card */
 
 .container{
 
-    background:#fff;
+width:100%;
 
-    padding:40px;
+max-width:430px;
 
-    border-radius:15px;
+background:rgba(255,255,255,.08);
 
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+backdrop-filter:blur(20px);
 
-    text-align:center;
+border:1px solid rgba(255,255,255,.15);
 
-    width:350px;
+border-radius:30px;
 
-}
+padding:35px;
 
+box-shadow:0 20px 60px rgba(0,0,0,.45);
 
+text-align:center;
 
-h1{
-
-    margin-bottom:30px;
-
-    color:#333;
+color:white;
 
 }
 
+/* Logo */
 
+.logo{
+
+width:130px;
+height:130px;
+
+object-fit:cover;
+
+border-radius:25px;
+
+margin-bottom:20px;
+
+box-shadow:0 0 25px rgba(0,217,255,.5);
+
+animation:floatLogo 3s ease-in-out infinite;
+
+}
+
+@keyframes floatLogo{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+/* Brand */
+
+.brand{
+
+font-size:36px;
+
+font-weight:700;
+
+letter-spacing:2px;
+
+margin-bottom:10px;
+
+}
+
+.tagline{
+
+color:#bfbfbf;
+
+margin-bottom:35px;
+
+font-size:15px;
+
+}
+
+/* Contact */
+
+.container{
+
+animation:fadeIn 1s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+/* Buttons */
 
 .btn{
 
-    display:block;
+display:flex;
 
-    text-decoration:none;
+align-items:center;
 
-    color:white;
+justify-content:center;
 
-    padding:15px;
+gap:12px;
 
-    margin:15px 0;
+width:100%;
 
-    border-radius:8px;
+padding:18px;
 
-    font-size:18px;
+margin:15px 0;
 
-    transition:.3s;
+border-radius:18px;
 
-}
+text-decoration:none;
 
+font-size:18px;
 
+font-weight:600;
 
-.call{
+transition:.3s;
 
-    background:#007BFF;
-
-}
-
-
-
-.whatsapp{
-
-    background:#25D366;
+color:white;
 
 }
-
-
-
-.email{
-
-    background:#E74C3C;
-
-}
-
-
 
 .btn:hover{
 
-    transform:scale(1.05);
+transform:translateY(-5px);
+
+box-shadow:0 0 30px rgba(0,217,255,.45);
 
 }
 
+.call{
 
-.note{
-    margin-top:20px;
-    font-size:12px;
-    color:#777;
+background:#00D9FF;
+
+color:#111;
+
+}
+
+.whatsapp{
+
+background:#25D366;
+
+}
+
+.email{
+
+background:#6C63FF;
+
+}
+
+.home{
+
+background:#111;
+
+border:2px solid #00D9FF;
+
+}
+
+/* Visit */
+
+.visit{
+
+margin-top:25px;
+
+color:#ddd;
+
+font-size:15px;
+
+line-height:26px;
+
+}
+
+.visit a{
+
+color:#00D9FF;
+
+text-decoration:none;
+
+font-weight:600;
+
+}
+
+/* Footer */
+
+.footer{
+
+margin-top:30px;
+
+padding-top:20px;
+
+border-top:1px solid rgba(255,255,255,.15);
+
+font-size:14px;
+
+line-height:28px;
+
+color:#d9d9d9;
+
+text-align:center;
+
+}
+
+@media(max-width:500px){
+
+.container{
+
+padding:28px;
+
+}
+
+.brand{
+
+font-size:30px;
+
+}
+
+.contactTitle{
+
+font-size:23px;
+
+}
+
+}
+.spinner{
+
+width:45px;
+
+height:45px;
+
+margin:auto;
+
+border:5px solid rgba(255,255,255,.2);
+
+border-top:5px solid #00D9FF;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
-<h1 id="personName">
-Loading...
+<img
+src="images/logo.png"
+class="logo">
+
+<h1 class="brand">
+
+JINNVERSE
+
 </h1>
 
+<p class="tagline">
 
-<a href="#" id="callButton" class="btn call">
-Call Me
-</a>
+CONNECT • SHARE • GROW
 
-
-<a href="#" id="whatsappButton" class="btn whatsapp" target="_blank">
-WhatsApp Me
-</a>
-
-
-<a href="#" id="emailButton" class="btn email">
-Email Me
-</a>
-
-
-<p class="note">
-Call disconnect after 1 minute automatically
 </p>
 
+<h2
+id="personName"
+class="contactTitle">
+
+<div id="loading">
+
+<div class="spinner"></div>
+
+<p>
+
+Loading Contact...
+
+</p>
+
+</div>
+
+<h2
+id="personName"
+class="contactTitle"
+style="display:none;">
+
+</h2>
+</h2>
+
+<a
+href="#"
+id="callButton"
+class="btn call">
+
+📞 Call Now
+
+</a>
+
+<a
+href="#"
+id="whatsappButton"
+class="btn whatsapp"
+target="_blank">
+
+💬 WhatsApp
+
+</a>
+
+<a
+href="#"
+id="emailButton"
+class="btn email">
+
+📧 Email
+
+</a>
+
+<a
+
+href="https://fardeen4deen-cell.github.io/Jinnverse/"
+
+class="btn home">
+
+🏠 Go To Homepage
+
+</a>
+
+<div class="visit">
+
+<div class="visit">
+
+🌐 Visit Our Official Website
+
+<br><br>
+
+<a
+href="https://fardeen4deen-cell.github.io/Jinnverse/">
+
+< Explore Jinnverse >
+</a>
 
 </div>
 
 
+<a
+href="https://fardeen4deen-cell.github.io/Jinnverse/">
 
+www.Jinnverse.com
 
+</a>
+
+</div>
+
+<div class="footer">
+
+🔒 Secure Contact
+
+<br>
+
+⚡ Powered by <b>Jinnverse</b>
+
+<br>
+
+📱 Smart QR Technology
+
+<br><br>
+
+<b>Made in India</b>
+
+</div>
+</div>
 
 <script type="module">
 
-
-
-// Firebase imports
-
-import { initializeApp } 
+import { initializeApp }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-
-import { getDatabase, ref, get } 
+import { getDatabase, ref, get }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-
-
-
-// Your Firebase Configuration
 
 const firebaseConfig = {
 
+apiKey:"AIzaSyBwuXsp9X7vbX_QTmuumLyUMbijuUEn8xc",
 
-apiKey: "AIzaSyBwuXsp9X7vbX_QTmuumLyUMbijuUEn8xc",
+authDomain:"jinn-contact-46240.firebaseapp.com",
 
+databaseURL:"https://jinn-contact-46240-default-rtdb.asia-southeast1.firebasedatabase.app",
 
-authDomain: "jinn-contact-46240.firebaseapp.com",
+projectId:"jinn-contact-46240",
 
+storageBucket:"jinn-contact-46240.firebasestorage.app",
 
-databaseURL: "https://jinn-contact-46240-default-rtdb.asia-southeast1.firebasedatabase.app",
+messagingSenderId:"508872584697",
 
-
-projectId: "jinn-contact-46240",
-
-
-storageBucket: "jinn-contact-46240.firebasestorage.app",
-
-
-messagingSenderId: "508872584697",
-
-
-appId: "1:508872584697:web:a62873c30f911b36716128"
-
+appId:"1:508872584697:web:a62873c30f911b36716128"
 
 };
 
+const app=initializeApp(firebaseConfig);
 
+const db=getDatabase(app);
 
+const params=new URLSearchParams(window.location.search);
 
+const id=params.get("id");
 
-// Initialize Firebase
-
-const app = initializeApp(firebaseConfig);
-
-
-const db = getDatabase(app);
-
-
-
-
-// Get ID from QR URL
-
-const params = new URLSearchParams(window.location.search);
-
-// Get ID from URL
-const id = params.get("id");
-
-
-
-
-
+let phoneNumber="";
 
 if(!id){
 
-    document.getElementById("personName").innerHTML =
-    "Contact Me";
+document.getElementById("personName").innerHTML="Welcome to Jinnverse";
 
 }
 
+else{
 
-
-
-
-
-// Firebase location
-
-const contactRef = ref(db,"contacts/"+id);
-
-
-
-
-let phoneNumber = "";
-
-
-
-
-
-// Get Contact Data
-
+const contactRef=ref(db,"contacts/"+id);
 
 get(contactRef)
 
 .then((snapshot)=>{
 
+if(snapshot.exists()){
 
-    console.log("Firebase Data:", snapshot.val());
+const data=snapshot.val();
 
+phoneNumber=String(data.phone);
 
+document.getElementById("personName").innerHTML=data.name;
 
-    if(snapshot.exists()){
+document.getElementById("loading").style.display="none";
 
+document.getElementById("personName").style.display="block";
 
+document.getElementById("callButton").href="tel:"+phoneNumber;
 
-        const data = snapshot.val();
+document.getElementById("whatsappButton").href="https://wa.me/"+String(data.whatsapp).replace(/\D/g,'');
 
-
-
-        phoneNumber = String(data.phone);
-
-
-
-
-
-        // Name
-
-        document.getElementById("personName").innerHTML =
-        data.name || "CONTACT ME";
-
-
-
-
-
-        // Call Button
-
-        document.getElementById("callButton").innerHTML =
-        "📞 Call Me";
-
-
-
-
-
-        // WhatsApp Button
-
-        document.getElementById("whatsappButton").href =
-"https://wa.me/" + String(data.whatsapp).replace(/\D/g,'');
-
-
-
-        document.getElementById("whatsappButton").innerHTML =
-        "💬 WhatsApp Me";
-
-
-
-
-
-        // Email Button
-
-        document.getElementById("emailButton").href =
-        "mailto:" + data.email;
-
-
-
-        document.getElementById("emailButton").innerHTML =
-        "📧 Email Me";
-
-
-
-    }
-
-
-    else{
-
-
-        document.getElementById("personName").innerHTML =
-        "Invalid QR Code";
-
-
-        alert("Contact not found in database");
-
-
-    }
-
-
-
-})
-
-
-
-.catch((error)=>{
-
-console.log("Firebase Error:", error);
-
-document.getElementById("personName").innerHTML =
-error.message;
-
-});
-
-
-
-
-
-
-
-// Call Button Function
-
-
-document.getElementById("callButton").onclick=function(e){
-
-
-e.preventDefault();
-
-
-
-if(phoneNumber===""){
-
-
-alert("Contact not loaded");
-
-
-return;
-
+document.getElementById("emailButton").href="mailto:"+data.email;
 
 }
 
+else{
 
+document.getElementById("personName").innerHTML="Invalid QR Code";
 
-window.location.href="tel:"+phoneNumber;
+}
 
+})
 
+.catch(()=>{
 
-};
+document.getElementById("personName").innerHTML="Connection Error";
 
+});
 
-
+}
 
 </script>
-
 
 </body>
 
