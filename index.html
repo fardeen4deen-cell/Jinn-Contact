@@ -371,28 +371,17 @@ CONNECT • SHARE • GROW
 
 </p>
 
-<h2
-id="personName"
-class="contactTitle">
-
 <div id="loading">
 
-<div class="spinner"></div>
+    <div class="spinner"></div>
 
-<p>
-
-Loading Contact...
-
-</p>
+    <p>Loading Contact...</p>
 
 </div>
 
-<h2
-id="personName"
+<h2 id="personName"
 class="contactTitle"
 style="display:none;">
-
-</h2>
 </h2>
 
 <a
@@ -516,6 +505,10 @@ let phoneNumber="";
 
 if(!id){
 
+document.getElementById("loading").style.display="none";
+
+document.getElementById("personName").style.display="block";
+
 document.getElementById("personName").innerHTML="Welcome to Jinnverse";
 
 }
@@ -550,13 +543,23 @@ document.getElementById("emailButton").href="mailto:"+data.email;
 
 else{
 
+document.getElementById("loading").style.display="none";
+
+document.getElementById("personName").style.display="block";
+
 document.getElementById("personName").innerHTML="Invalid QR Code";
 
 }
 
 })
 
-.catch(()=>{
+.catch((error)=>{
+
+console.error(error);
+
+document.getElementById("loading").style.display="none";
+
+document.getElementById("personName").style.display="block";
 
 document.getElementById("personName").innerHTML="Connection Error";
 
